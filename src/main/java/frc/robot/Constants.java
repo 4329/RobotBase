@@ -16,12 +16,12 @@ public final class Constants {
     }
 
     public static final class AutoConstants {
-        public static final double kAutoDriveDistanceInches = 60;
-        public static final double kAutoBackupDistanceInches = 20;
-        public static final double kAutoDriveSpeed = 0.5;
+        public static final double AUTO_DRIVE_SPEED = 0.5;
     }
 
     public static final class OIConstants {
-        public static final int kDriverControllerPort = 1;
+        public static final int DRIVER_CONTROLLER = 0;
+        public static final int OPERATOR_CONTROLLER = 1;
+
     }
 }

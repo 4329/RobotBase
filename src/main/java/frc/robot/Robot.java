@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
-    private RobotContainer robotContainer;
+    RobotContainer robotContainer = new RobotContainer();
   }
 
   /**

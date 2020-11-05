@@ -2,12 +2,13 @@ package frc.robot;
 
 import frc.robot.subsystems.MySubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.Button;
 import frc.robot.commands.MyAutonomousCommand;
+import frc.robot.commands.MyCommand;
 import frc.robot.commands.MyDefaultCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class RobotContainer {
     // The robot's subsystems
@@ -20,8 +21,8 @@ public class RobotContainer {
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     // The controllers
-    XboxController driverController = new XboxController(0);
-    XboxController operatorController = new XboxController(1);
+    XboxController driverController = new XboxController(Constants.OIConstants.DRIVER_CONTROLLER);
+    XboxController operatorController = new XboxController(Constants.OIConstants.OPERATOR_CONTROLLER);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -49,20 +50,8 @@ public class RobotContainer {
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        // Grab the hatch when the 'A' button is pressed.
-        new Button(driverController, ).whenPressed(new GrabHatch(m_hatchSubsystem));
-        // Release the hatch when the 'B' button is pressed.
-        new JoystickButton(m_driverController, Button.kB.value).whenPressed(new ReleaseHatch(m_hatchSubsystem));
-        // While holding the shoulder button, drive at half speed
-        new JoystickButton(m_driverController, Button.kBumperRight.value).whenHeld(new HalveDriveSpeed(m_robotDrive));
-    }
-
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
-    public Command getAutonomousCommand() {
-        return m_chooser.getSelected();
+        // Run MyCommand whenever the 'A' button is pressed
+        new JoystickButton(driverController, edu.wpi.first.wpilibj.XboxController.Button.kA.value)
+                .whenPressed(new MyCommand());
     }
 }
