@@ -1,6 +1,6 @@
 package frc.robot;
 
-public final class OIConstants 
+public final class OIConstants
 {
     public static final int DRIVER_CONTROLLER = 0;
     public static final int OPERATOR_CONTROLLER = 1;

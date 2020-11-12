@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
-public class RobotContainer {
+public class RobotContainer
+{
     // The robot's subsystems
     private final MySubsystem mySubsystem = new MySubsystem();
 
@@ -21,13 +22,14 @@ public class RobotContainer {
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     // The controllers
-    XboxController driverController = new XboxController(Constants.OIConstants.DRIVER_CONTROLLER);
-    XboxController operatorController = new XboxController(Constants.OIConstants.OPERATOR_CONTROLLER);
+    XboxController driverController = new XboxController(OIConstants.DRIVER_CONTROLLER);
+    XboxController operatorController = new XboxController(OIConstants.OPERATOR_CONTROLLER);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
-    public RobotContainer() {
+    public RobotContainer()
+    {
         // Configure the button bindings
         configureButtonBindings();
 
@@ -49,9 +51,9 @@ public class RobotContainer {
      * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
-    private void configureButtonBindings() {
+    private void configureButtonBindings()
+    {
         // Run MyCommand whenever the 'A' button is pressed
-        new JoystickButton(driverController, edu.wpi.first.wpilibj.XboxController.Button.kA.value)
-                .whenPressed(new MyCommand());
+        new JoystickButton(driverController, OIConstants.A_BUTTON).whenPressed(new MyCommand());
     }
 }
