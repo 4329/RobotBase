@@ -20,4 +20,6 @@ public final class OIConstants
     public static final int right_trigger = 3;
     public static final int right_stick_x = 4;
     public static final int right_stick_y = 5;
+
+    public static final double DEADZONE = .09;
 }

@@ -8,8 +8,9 @@ public class MyDefaultCommand extends CommandBase
 
     private MySubsystem mySubsystem;
 
-    public MyDefaultCommand()
+    public MyDefaultCommand(MySubsystem subsystem)
     {
+        mySubsystem = subsystem;
         addRequirements(mySubsystem);
     }
 

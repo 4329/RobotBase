@@ -8,8 +8,9 @@ public class MyAutonomousCommand extends CommandBase
 
     private MySubsystem mySubsystem;
 
-    public MyAutonomousCommand()
+    public MyAutonomousCommand(MySubsystem subsystem)
     {
+        mySubsystem = subsystem;
         addRequirements(mySubsystem);
     }
 
