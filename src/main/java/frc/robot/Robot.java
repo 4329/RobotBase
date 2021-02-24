@@ -19,8 +19,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot
-{
+public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -31,8 +30,8 @@ public class Robot extends TimedRobot
    * for any initialization code.
    */
   @Override
-  public void robotInit()
-  {
+  public void robotInit() {
+    Configrun.loadconfig();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -50,8 +49,7 @@ public class Robot extends TimedRobot
    * and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic()
-  {
+  public void robotPeriodic() {
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled
     // commands, running already-scheduled commands, removing finished or
@@ -75,8 +73,7 @@ public class Robot extends TimedRobot
    * make sure to add them to the chooser code above as well.
    */
   @Override
-  public void autonomousInit()
-  {
+  public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
@@ -86,17 +83,15 @@ public class Robot extends TimedRobot
    * This function is called periodically during autonomous.
    */
   @Override
-  public void autonomousPeriodic()
-  {
-    switch (m_autoSelected)
-    {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
+  public void autonomousPeriodic() {
+    switch (m_autoSelected) {
+      case kCustomAuto:
+        // Put custom auto code here
+        break;
+      case kDefaultAuto:
+      default:
+        // Put default auto code here
+        break;
     }
   }
 
@@ -104,47 +99,41 @@ public class Robot extends TimedRobot
    * This function is called once when teleop is enabled.
    */
   @Override
-  public void teleopInit()
-  {
+  public void teleopInit() {
   }
 
   /**
    * This function is called periodically during operator control.
    */
   @Override
-  public void teleopPeriodic()
-  {
+  public void teleopPeriodic() {
   }
 
   /**
    * This function is called once when the robot is disabled.
    */
   @Override
-  public void disabledInit()
-  {
+  public void disabledInit() {
   }
 
   /**
    * This function is called periodically when disabled.
    */
   @Override
-  public void disabledPeriodic()
-  {
+  public void disabledPeriodic() {
   }
 
   /**
    * This function is called once when test mode is enabled.
    */
   @Override
-  public void testInit()
-  {
+  public void testInit() {
   }
 
   /**
    * This function is called periodically during test mode.
    */
   @Override
-  public void testPeriodic()
-  {
+  public void testPeriodic() {
   }
 }
