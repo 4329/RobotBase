@@ -8,9 +8,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.AutonomousRoutineOptions;
 import frc.robot.subsystems.Pigeon;
 
 /**
@@ -23,8 +26,8 @@ import frc.robot.subsystems.Pigeon;
 public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private CommandBase m_autoSelected;
+  private final SendableChooser<CommandBase> m_chooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -32,11 +35,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    //RobotContainer.swerveDrive.resetEncoders();
+    AutonomousRoutineOptions autonomousRoutineOptions = new AutonomousRoutineOptions();
     Configrun.loadconfig();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
+    m_chooser.setDefaultOption("Default Auto", autonomousRoutineOptions.driveForwardAutonomous());
     SmartDashboard.putData("Auto choices", m_chooser);
-
+  
     RobotContainer robotContainer = new RobotContainer();
   }
 
@@ -75,6 +79,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    Pigeon.resetPigeon();
+    RobotContainer.swerveDrive.resetEncoders();
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
@@ -84,7 +90,7 @@ public class Robot extends TimedRobot {
    * This function is called periodically during autonomous.
    */
   @Override
-  public void autonomousPeriodic() {
+  public void autonomousPeriodic() {/* TODO FIX THIS
     switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
@@ -93,7 +99,7 @@ public class Robot extends TimedRobot {
       default:
         // Put default auto code here
         break;
-    }
+    }*/
   }
 
   /**
@@ -104,7 +110,7 @@ public class Robot extends TimedRobot {
    {
     RobotContainer.swerveDrive.resetEncoders();
     Pigeon.resetPigeon();
-
+    RobotContainer.swerveLock.unsetLock();
   }
 
   /**

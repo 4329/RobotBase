@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.MyAutonomousCommand;
 import frc.robot.commands.MyCommand;
 import frc.robot.commands.MyDefaultCommand;
-import frc.robot.commands.Skrt;
+import frc.robot.commands.SwerveDriveCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -47,7 +47,7 @@ public class RobotContainer
         // Configure default commands
         // Set the default drive command to split-stick arcade drive
         //  ####mySubsystem.setDefaultCommand(new MyDefaultCommand(mySubsystem));
-        swerveDrive.setDefaultCommand(new Skrt());
+        swerveDrive.setDefaultCommand(new SwerveDriveCommand());
 
         // Add commands to the autonomous command chooser
         m_chooser.setDefaultOption("Simple Auto", myAuto);
