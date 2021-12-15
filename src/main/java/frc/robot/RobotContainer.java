@@ -9,11 +9,9 @@ import frc.robot.subsystems.Utilities;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.MyAutonomousCommand;
 import frc.robot.commands.MyCommand;
-import frc.robot.commands.MyDefaultCommand;
 import frc.robot.commands.SwerveDriveCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class RobotContainer
@@ -23,14 +21,10 @@ public class RobotContainer
     public static final OI oi = new OI();
 
     // The autonomous routines
-    private final Command myAuto = new MyAutonomousCommand(mySubsystem);
     public static final SwerveLock swerveLock = new SwerveLock();
     public static final SwerveDrive swerveDrive = new SwerveDrive();
     public static final Utilities utilities = new Utilities();
     public static final Pigeon pigeonSub = new Pigeon();
-
-    // A chooser for autonomous commands
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     // The controllers
     public static final XboxController driverController = new XboxController(OIConstants.DRIVER_CONTROLLER);
@@ -48,13 +42,6 @@ public class RobotContainer
         // Set the default drive command to split-stick arcade drive
         //  ####mySubsystem.setDefaultCommand(new MyDefaultCommand(mySubsystem));
         swerveDrive.setDefaultCommand(new SwerveDriveCommand());
-
-        // Add commands to the autonomous command chooser
-        m_chooser.setDefaultOption("Simple Auto", myAuto);
-        // m_chooser.addOption("Complex Auto", m_complexAuto);
-
-        // Put the chooser on the dashboard
-        Shuffleboard.getTab("Autonomous").add(m_chooser);
     }
 
     /**
