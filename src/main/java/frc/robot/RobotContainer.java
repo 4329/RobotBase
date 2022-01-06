@@ -2,26 +2,29 @@ package frc.robot;
 
 import frc.robot.subsystems.MySubsystem;
 import frc.robot.subsystems.OI;
+import frc.robot.subsystems.Pigeon;
+import frc.robot.subsystems.SwerveDrive;
+import frc.robot.subsystems.SwerveLock;
+import frc.robot.subsystems.Utilities;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.MyAutonomousCommand;
 import frc.robot.commands.MyCommand;
-import frc.robot.commands.MyDefaultCommand;
+import frc.robot.commands.SwerveDriveCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class RobotContainer
 {
     // The robot's subsystems
     private final MySubsystem mySubsystem = new MySubsystem();
-    private final OI oi = new OI();
+    public static final OI oi = new OI();
 
     // The autonomous routines
-    private final Command myAuto = new MyAutonomousCommand(mySubsystem);
-
-    // A chooser for autonomous commands
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    public static final SwerveLock swerveLock = new SwerveLock();
+    public static final SwerveDrive swerveDrive = new SwerveDrive();
+    public static final Utilities utilities = new Utilities();
+    public static final Pigeon pigeonSub = new Pigeon();
 
     // The controllers
     public static final XboxController driverController = new XboxController(OIConstants.DRIVER_CONTROLLER);
@@ -37,14 +40,8 @@ public class RobotContainer
 
         // Configure default commands
         // Set the default drive command to split-stick arcade drive
-        mySubsystem.setDefaultCommand(new MyDefaultCommand(mySubsystem));
-
-        // Add commands to the autonomous command chooser
-        m_chooser.setDefaultOption("Simple Auto", myAuto);
-        // m_chooser.addOption("Complex Auto", m_complexAuto);
-
-        // Put the chooser on the dashboard
-        Shuffleboard.getTab("Autonomous").add(m_chooser);
+        //  ####mySubsystem.setDefaultCommand(new MyDefaultCommand(mySubsystem));
+        swerveDrive.setDefaultCommand(new SwerveDriveCommand());
     }
 
     /**

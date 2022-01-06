@@ -8,9 +8,16 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.AutonomousRoutineOptions;
+import frc.robot.subsystems.Pigeon;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import frc.robot.commands.MyDefaultCommand;
+import frc.robot.commands.SwerveDriveCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,23 +27,26 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
-
+  private CommandBase m_autoSelected;
+  private final SendableChooser<CommandBase> m_chooser = new SendableChooser<>();
+  RobotContainer robotContainer = new RobotContainer();
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
-    Configrun.loadconfig();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    AutonomousRoutineOptions autonomousRoutineOptions = new AutonomousRoutineOptions();
 
-    RobotContainer robotContainer = new RobotContainer();
+    // Add commands to the autonomous command chooser
+    m_chooser.setDefaultOption("Simple Auto", autonomousRoutineOptions.driveForwardAutonomous());
+    // m_chooser.addOption("Complex Auto", m_complexAuto);
+
+    // Put the chooser on the dashboard
+    Shuffleboard.getTab("Autonomous").add(m_chooser);
+
+    //RobotContainer.swerveDrive.resetEncoders();
+    Configrun.loadconfig();
   }
 
   /**
@@ -51,12 +61,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     // Runs the Scheduler. This is responsible for polling buttons, adding
-    // newly-scheduled
-    // commands, running already-scheduled commands, removing finished or
+    // newly-scheduled commands, running already-scheduled commands, removing finished or
     // interrupted commands,
     // and running subsystem periodic() methods. This must be called from the
-    // robot's periodic
-    // block in order for anything in the Command-based framework to work.
+    // robot's periodic block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
   }
 
@@ -74,6 +82,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    Pigeon.resetPigeon();
+    RobotContainer.swerveDrive.resetEncoders();
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
@@ -83,7 +93,7 @@ public class Robot extends TimedRobot {
    * This function is called periodically during autonomous.
    */
   @Override
-  public void autonomousPeriodic() {
+  public void autonomousPeriodic() {/* TODO FIX THIS
     switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
@@ -92,14 +102,18 @@ public class Robot extends TimedRobot {
       default:
         // Put default auto code here
         break;
-    }
+    }*/
   }
 
   /**
    * This function is called once when teleop is enabled.
    */
   @Override
-  public void teleopInit() {
+  public void teleopInit()
+   {
+    RobotContainer.swerveDrive.resetEncoders();
+    Pigeon.resetPigeon();
+    RobotContainer.swerveLock.unsetLock();
   }
 
   /**
