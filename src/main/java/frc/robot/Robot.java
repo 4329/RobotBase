@@ -29,6 +29,7 @@ import frc.robot.commands.SwerveDriveCommand;
 public class Robot extends TimedRobot {
   private CommandBase m_autoSelected;
   private final SendableChooser<CommandBase> m_chooser = new SendableChooser<>();
+  RobotContainer robotContainer = new RobotContainer();
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -113,7 +114,6 @@ public class Robot extends TimedRobot {
     RobotContainer.swerveDrive.resetEncoders();
     Pigeon.resetPigeon();
     RobotContainer.swerveLock.unsetLock();
-    RobotContainer robotContainer = new RobotContainer();
   }
 
   /**
