@@ -6,11 +6,8 @@ import frc.robot.subsystems.Pigeon;
 import frc.robot.subsystems.SwerveDrive;
 import frc.robot.subsystems.SwerveLock;
 import frc.robot.subsystems.Utilities;
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.MyAutonomousCommand;
 import frc.robot.commands.MyCommand;
 import frc.robot.commands.SwerveDriveCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
