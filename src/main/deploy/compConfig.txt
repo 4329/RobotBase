@@ -1,3 +1,4 @@
+#drive variables
 driveP = .1
 driveI = 0
 driveD = 0
@@ -6,6 +7,8 @@ driveDelay = .1
 aDrive = .015
 bDrive = .4
 maxSpeed = .7
+
+#turning variables
 headingHoldP = 6
 headingHoldI = 0
 headingHoldD = 0
@@ -16,14 +19,16 @@ turnD = 1
 turnTolerance = 1.8
 turnStaticFeedforward = 0.103
 
+#wheel offsets
 offset0 = 325.4
 offset1 = 320
 offset2 = 39
 offset3 = 131.2
 
-
+#auto variables
 simpleAutoAngle = 90
 simpleAutoSpeed = 0.5
 simpleAutoAngle2 = 270
 
+#part ID's
 Pigeon_ID = 9
