@@ -11,6 +11,7 @@ intakeUp = false
 controlPanelActuatorUp = true
 armSolenoidUp = true
 shooterStopDelay = 0.5
+testMotorSpeed = -0.85
 
 shooterP = 6
 shooterI = 0
@@ -106,7 +107,7 @@ timeoutLimeLight = 1
 
 climbSpeedMax = 0.5
 
-Intake_ID = 12
+TestMotor_ID = 12
 Pigeon_ID = 9
 Intakewheel_ID = 10
 Spindexporter_ID = 11
