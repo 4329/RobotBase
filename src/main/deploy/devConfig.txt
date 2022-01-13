@@ -1,4 +1,4 @@
-#drive variables
+#run drive PID variables
 driveP = .1
 driveI = 0
 driveD = 0
@@ -8,11 +8,13 @@ aDrive = .015
 bDrive = .4
 maxSpeed = .7
 
-#turning variables
+#drive variables
 headingHoldP = 6
 headingHoldI = 0
 headingHoldD = 0
 headingHoldStaticFeedforward = 0
+
+#turning variables
 turnP = 12
 turnI = 0
 turnD = 1
