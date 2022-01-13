@@ -7,7 +7,6 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Pigeon extends SubsystemBase {
     private static PigeonIMU pigeon;
@@ -22,13 +21,15 @@ public class Pigeon extends SubsystemBase {
     public void putRawPigeon()
     {
         pigeon.getYawPitchRoll(yawPitchRole);
-        //SmartDashboard.putNumber("Pigeon", yawPitchRole[0]);
-        Shuffleboard.getTab("Alpha").add("Pidgeon",yawPitchRole[0]).withWidget(BuiltInWidgets.kTextView).withPosition(0, 1).getEntry();
+        //SmartDashboard.putNumber("Pigeon", yawPitchRole[0]); replaced with line 26
+        Shuffleboard.getTab("Pidgeon Information").add("yawPitchRole[0]; rename",yawPitchRole[0]).withWidget(BuiltInWidgets.kTextView).withPosition(0, 0).getEntry();
+        //IMPORTANT INFO - displaying widgets in Shuffleboard: Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x?>, <y?>).getEntry();
     }
 
     public void putPigeon()
     {
-        SmartDashboard.putNumber("Pigeon", getYaw());
+        //SmartDashboard.putNumber("Pigeon", getYaw());
+        Shuffleboard.getTab("Pidgeon Information").add("getYaw; rename",getYaw()).withWidget(BuiltInWidgets.kTextView).withPosition(0, 2).getEntry();
     }
 
     // Returns yaw Right: 90 Left: 27

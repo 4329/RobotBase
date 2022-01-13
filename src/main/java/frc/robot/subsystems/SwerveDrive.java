@@ -65,6 +65,11 @@ public class SwerveDrive extends SubsystemBase
                 SmartDashboard.putNumber("FL", frontLeft.getAngle());
                 SmartDashboard.putNumber("BL", backLeft.getAngle());
                 SmartDashboard.putNumber("BR", backRight.getAngle());
+                //TODO_
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
         }
 
         public void putRawAngles()
@@ -73,6 +78,11 @@ public class SwerveDrive extends SubsystemBase
                 SmartDashboard.putNumber("FL_R", frontLeft.getRawAngle());
                 SmartDashboard.putNumber("BL_R", backLeft.getRawAngle());
                 SmartDashboard.putNumber("BR_R", backRight.getRawAngle());
+                //TODO_
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
+                //Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
         }
 
         public void drive(double xTranslation, double yTranslation, double rotation)
@@ -181,6 +191,7 @@ public class SwerveDrive extends SubsystemBase
                 double sum = frontRight.encoderTranslationGet(frontRight) + frontLeft.encoderTranslationGet(frontLeft)
                                 + backLeft.encoderTranslationGet(backLeft) + backRight.encoderTranslationGet(backRight);
                 SmartDashboard.putNumber("AveragePulses", sum / 4);
+                //TODO_
         }
 
         public double getAverageEncoderPulses()
@@ -219,7 +230,7 @@ public class SwerveDrive extends SubsystemBase
         public void runDrivePID(double setpoint, double angle)
         {
                 setpoint = setpoint + (setpoint * aDrive + bDrive);
-                SmartDashboard.putNumber("Setpoint in Inches", setpoint);
+                SmartDashboard.putNumber("Setpoint in Inches", setpoint);//TODO_
                 setpoint = setpoint / 12; // convert to feet
                 setpoint = setpoint * unitsPerFoot; // covert to native units
                 double output = drivePID.calculate(getAverageEncoderPulses(), setpoint);
