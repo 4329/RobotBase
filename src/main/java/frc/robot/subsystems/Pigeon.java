@@ -1,4 +1,4 @@
-//https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/advanced-usage/shuffleboard-commands-subsystems.html?highlight=displaying%20shuffleboard
+//https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/advanced-usage/shuffleboard-commands-subsystems.html
 package frc.robot.subsystems;
 
 import frc.robot.Configrun;
@@ -23,7 +23,7 @@ public class Pigeon extends SubsystemBase {
         pigeon.getYawPitchRoll(yawPitchRole);
         //SmartDashboard.putNumber("Pigeon", yawPitchRole[0]); replaced with line 26
         Shuffleboard.getTab("Pidgeon Information").add("yawPitchRole[0]; rename",yawPitchRole[0]).withWidget(BuiltInWidgets.kTextView).withPosition(0, 0).getEntry();
-        //IMPORTANT INFO - displaying widgets in Shuffleboard: Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x?>, <y?>).getEntry();
+        //IMPORTANT INFO - displaying widgets in Shuffleboard: Shuffleboard.getTab("<new tab name>").add("<widget name>",<displayed info>).withWidget(BuiltInWidgets.<widget type>).withPosition(<x>, <y>).getEntry();
     }
 
     public void putPigeon()

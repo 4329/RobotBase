@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutonomousRoutineOptions;
 import frc.robot.subsystems.Pigeon;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -44,6 +45,10 @@ public class Robot extends TimedRobot {
 
     //RobotContainer.swerveDrive.resetEncoders();
     Configrun.loadconfig();
+    //Experimenting with Shuffleboard below
+    Shuffleboard.getTab("Tab Test").add("test",7).withWidget(BuiltInWidgets.kTextView).withPosition(0, 0).getEntry();
+    //Shuffleboard.selectTab("Tab Test").add("test",8).withWidget(BuiltInWidgets.kTextView).withPosition(3, 5).getEntry();
+    Shuffleboard.getTab("Size Test").add("test",4329).withWidget(BuiltInWidgets.kTextView).withPosition(0, 0).withSize(3,3).getEntry();
   }
 
   /**
