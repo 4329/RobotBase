@@ -109,6 +109,8 @@ public class SwerveDrive extends SubsystemBase
         }
         public void putAngles()
         {
+                //Documentation:
+                Shuffleboard.getTab("Swerve Debug").add("Documentation","https://github.com/4329/RobotBase/blob/shuffleboardcleanup/swerveDebugDocs.md").withPosition(4,0).withSize(1,7).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Front left
                 frontLeftInitialAngle = frontLeft.getRawAngle();
                 frontLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
