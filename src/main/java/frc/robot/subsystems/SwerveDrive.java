@@ -7,6 +7,7 @@ import frc.robot.SwerveModuleConstants;
 import frc.robot.Configrun;
 import frc.robot.RobotContainer;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 public class SwerveDrive extends SubsystemBase
@@ -21,6 +22,21 @@ public class SwerveDrive extends SubsystemBase
         public static int LEFT = 180, FORWARD = 90, RIGHT = 0, BACKWARD = 270;
         private double percentOutput = 0;
         private NetworkTableEntry fieldOrientedControlNTE;
+        //Display angle after offset
+        private NetworkTableEntry frontLeftAngleDisplay;
+        private NetworkTableEntry frontRightAngleDisplay;
+        private NetworkTableEntry backLeftAngleDisplay;
+        private NetworkTableEntry backRightAngleDisplay;
+        //Display angle after offset
+        private NetworkTableEntry frontLeftRawAngleDisplay;
+        private NetworkTableEntry frontRightRawAngleDisplay;
+        private NetworkTableEntry backLeftRawAngleDisplay;
+        private NetworkTableEntry backRightRawAngleDisplay;
+        //Display angle after offset
+        private NetworkTableEntry frontLeftOffsetDisplay;
+        private NetworkTableEntry frontRightOffsetDisplay;
+        private NetworkTableEntry backLeftOffsetDisplay;
+        private NetworkTableEntry backRightOffsetDisplay;
 
         public SwerveDrive()
         {
@@ -59,20 +75,41 @@ public class SwerveDrive extends SubsystemBase
                                 .getEntry();
         }
 
+        public void updateShuffleboardAngles()
+        {
+                //Display angle after offset
+                frontLeftAngleDisplay.setDouble(frontLeft.getAngle());
+                frontRightAngleDisplay.setDouble(frontRight.getAngle());
+                backLeftAngleDisplay.setDouble(backLeft.getAngle());
+                backRightAngleDisplay.setDouble(backRight.getAngle());
+                //Display angle before offset
+                frontLeftRawAngleDisplay.setDouble(frontLeft.getRawAngle());
+                frontRightRawAngleDisplay.setDouble(frontRight.getRawAngle());
+                backLeftRawAngleDisplay.setDouble(backLeft.getRawAngle());
+                backRightRawAngleDisplay.setDouble(backRight.getRawAngle());
+                //Display offset
+                frontLeftOffsetDisplay.setDouble(frontLeft.getOffset());
+                frontRightOffsetDisplay.setDouble(frontRight.getOffset());
+                backLeftOffsetDisplay.setDouble(backLeft.getOffset());
+                backRightOffsetDisplay.setDouble(backRight.getOffset());
+        }
         public void putAngles()
         {
-                SmartDashboard.putNumber("FR", frontRight.getAngle());
-                SmartDashboard.putNumber("FL", frontLeft.getAngle());
-                SmartDashboard.putNumber("BL", backLeft.getAngle());
-                SmartDashboard.putNumber("BR", backRight.getAngle());
-        }
-
-        public void putRawAngles()
-        {
-                SmartDashboard.putNumber("FR_R", frontRight.getRawAngle());
-                SmartDashboard.putNumber("FL_R", frontLeft.getRawAngle());
-                SmartDashboard.putNumber("BL_R", backLeft.getRawAngle());
-                SmartDashboard.putNumber("BR_R", backRight.getRawAngle());
+                //Display angle after offset
+                frontLeftAngleDisplay = Shuffleboard.getTab("Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightAngleDisplay = Shuffleboard.getTab("Debug").add("Front Right Angle",frontRight.getAngle()).withPosition(1,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftAngleDisplay = Shuffleboard.getTab("Debug").add("Back Left Angle",backLeft.getAngle()).withPosition(0,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightAngleDisplay = Shuffleboard.getTab("Debug").add("Back Right Angle",backRight.getAngle()).withPosition(1,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                //Display Angle before offset
+                frontLeftRawAngleDisplay = Shuffleboard.getTab("Debug").add("Front Left Raw Angle",frontLeft.getRawAngle()).withPosition(0,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightRawAngleDisplay = Shuffleboard.getTab("Debug").add("Front Right Raw Angle",frontRight.getRawAngle()).withPosition(1,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftRawAngleDisplay = Shuffleboard.getTab("Debug").add("Back Left Raw Angle",backLeft.getRawAngle()).withPosition(0,3).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightRawAngleDisplay = Shuffleboard.getTab("Debug").add("Back Right Raw Angle",backRight.getRawAngle()).withPosition(1,3).withWidget(BuiltInWidgets.kTextView).getEntry();
+                //Display offset
+                frontLeftOffsetDisplay = Shuffleboard.getTab("Debug").add("Front Left Offset",frontLeft.getOffset()).withPosition(0,4).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightOffsetDisplay = Shuffleboard.getTab("Debug").add("Front Right Offset",frontRight.getOffset()).withPosition(1,4).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftOffsetDisplay = Shuffleboard.getTab("Debug").add("Back Left Offset",backLeft.getOffset()).withPosition(0,5).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightOffsetDisplay = Shuffleboard.getTab("Debug").add("Back Right Offset",backRight.getOffset()).withPosition(1,5).withWidget(BuiltInWidgets.kTextView).getEntry();
         }
 
         public void drive(double xTranslation, double yTranslation, double rotation)

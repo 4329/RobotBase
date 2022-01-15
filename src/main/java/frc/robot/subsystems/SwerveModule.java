@@ -146,4 +146,9 @@ public class SwerveModule extends SubsystemBase
   {
     module.translationMotor.getEncoder().setPosition(0);
   }
+
+  public double getOffset()
+  {
+    return offset;
+  }
 }

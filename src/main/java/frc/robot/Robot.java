@@ -142,6 +142,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testInit() {
+    RobotContainer.swerveDrive.putAngles();
   }
 
   /**
@@ -149,5 +150,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    RobotContainer.swerveDrive.updateShuffleboardAngles();
   }
 }
