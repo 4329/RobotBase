@@ -34,5 +34,4 @@ simpleAutoSpeed = 0.5
 simpleAutoAngle2 = 270
 
 #part ID's
-Intake_ID = 12
 Pigeon_ID = 9
