@@ -26,7 +26,7 @@ public class PID extends SubsystemBase
         // The wheel is commanded directly to the requested angle
         pidController.setSetpoint(angle);
         output = pidController.calculate(module.getAngle());
-        output = output / 90; // May need to reverse sign here
+        output /= 90; // May need to reverse sign here
         error = pidController.getPositionError();
         return output;
     }
@@ -36,9 +36,9 @@ public class PID extends SubsystemBase
     {
         /* Rather than turning the wheel all the way around to the requested angle
         we turn the wheel to the complementary angle and command it backwards */
-        SwerveModuleState desiredAngle = new SwerveModuleState(speed, new Rotation2d(angle));
-        SwerveModuleState state = SwerveModuleState.optimize(desiredAngle, new Rotation2d(module.getAngle()));
-        
+        SwerveModuleState desiredState = new SwerveModuleState(speed, new Rotation2d(angle));
+        SwerveModuleState state = SwerveModuleState.optimize(desiredState, new Rotation2d(module.getAngle()));
+        pidController.setSetpoint(state.angle.getDegrees());
         error = pidController.getPositionError();
         return state;
     }
