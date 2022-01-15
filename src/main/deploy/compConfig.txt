@@ -20,6 +20,7 @@ turnTolerance = 1.8
 turnStaticFeedforward = 0.103
 
 #wheel offsets
+#BL BR FR FL
 offset0 = 325.4
 offset1 = 320
 offset2 = 39
