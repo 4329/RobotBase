@@ -1,8 +1,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.PIDConstants;
 
@@ -32,23 +32,14 @@ public class PID extends SubsystemBase
     }
 
     // Runs the PID loop for angles that exceed delta 90
-    public double controlRotationExceeds90(double angle, SwerveModule module)
+    public SwerveModuleState controlRotationExceeds90(double angle, SwerveModule module, double speed)
     {
         /* Rather than turning the wheel all the way around to the requested angle
-         we turn the wheel to the complementary angle and command it backwards */
-        angle = angle - 180;
-        angle = Utilities.resolveAngle(angle);
-        if (angle < 90) {
-            testUnder90 = 0;
-        } else {
-            testUnder90 = 1;
-        }
-        Shuffleboard.get("BooleanAngle").add("True", testUnder90).withWidget(BuiltInWidgets.kTextView).withPosition(0, 0);
-        pidController.setSetpoint(angle);
-        output = pidController.calculate(module.getAngle());
-        output = output / 90; // May need to reverse sign here
+        we turn the wheel to the complementary angle and command it backwards */
+        SwerveModuleState desiredAngle = new SwerveModuleState(speed, new Rotation2d(angle));
+        SwerveModuleState state = SwerveModuleState.optimize(desiredAngle, new Rotation2d(module.getAngle()));
+        
         error = pidController.getPositionError();
-        return output;
+        return state;
     }
-
 }

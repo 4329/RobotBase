@@ -6,6 +6,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMaxLowLevel.PeriodicFrame;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.kinematics.SwerveModuleState;
+
 import java.lang.Math;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -51,19 +54,11 @@ public class SwerveModule extends SubsystemBase
   public void driveModule(double speed, double angle, SwerveModule module)
   {
     speed = speed * speed; // Speed is squared for driver
-    double rotation;
+    
+    SwerveModuleState state = rotationController.controlRotationExceeds90(angle, module, speed);
 
-    if (Math.abs(angle - getAngle()) > 90)
-    {
-      rotation = rotationController.controlRotationExceeds90(angle, module);
-      speed = speed * -1;
-    } else
-    {
-      rotation = rotationController.controlRotationWithin90(angle, module);
-    }
-
-    module.translationMotor.set(speed);
-    module.rotationMotor.set(rotation);
+    module.translationMotor.set((state.angle.getDegrees()) / 9000);
+    module.rotationMotor.set(state.speedMetersPerSecond);
   }
 
   public void driveModuleTeleop(SwerveModule module, double xTranslation, double yTranslation, double rotation)
