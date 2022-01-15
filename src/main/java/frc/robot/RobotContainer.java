@@ -20,6 +20,8 @@ public class RobotContainer
     private final MySubsystem mySubsystem = new MySubsystem();
     public static final OI oi = new OI();
 
+    //public static final Shooter shooter = new Shooter();
+
     // The autonomous routines
     public static final SwerveLock swerveLock = new SwerveLock();
     public static final SwerveDrive swerveDrive = new SwerveDrive();

@@ -12,6 +12,10 @@ public class PID extends SubsystemBase
 
     public PID()
     {
+        //PID
+        //Porportional = P
+        //Intergal = I
+        //derivative = D
         pidController = new PIDController(PIDConstants.ROTATION_P, PIDConstants.ROTATION_I, PIDConstants.ROTATION_D);
         // pidController.setInputRange(0.0, 360.0);
         // pidController.setContinuous(true);
