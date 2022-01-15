@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutonomousRoutineOptions;
 import frc.robot.subsystems.Pigeon;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import frc.robot.commands.MyDefaultCommand;
 import frc.robot.commands.SwerveDriveCommand;
 
 /**
