@@ -22,6 +22,7 @@ turnTolerance = 1.8
 turnStaticFeedforward = 0.103
 
 #wheel offsets
+#BL BR FR FL
 offset0 = 90.0
 offset1 = 293.9
 offset2 = 33.9
@@ -33,5 +34,4 @@ simpleAutoSpeed = 0.5
 simpleAutoAngle2 = 270
 
 #part ID's
-Intake_ID = 12
 Pigeon_ID = 9
