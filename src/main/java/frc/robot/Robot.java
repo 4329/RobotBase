@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.robot.commands.MyDefaultCommand;
 import frc.robot.commands.SwerveDriveCommand;
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -36,6 +37,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    
+
     AutonomousRoutineOptions autonomousRoutineOptions = new AutonomousRoutineOptions();
 
     // Add commands to the autonomous command chooser
@@ -85,6 +88,7 @@ public class Robot extends TimedRobot {
     Pigeon.resetPigeon();
     RobotContainer.swerveDrive.resetEncoders();
     m_autoSelected = m_chooser.getSelected();
+  
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }

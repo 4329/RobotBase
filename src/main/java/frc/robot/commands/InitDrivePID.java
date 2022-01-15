@@ -1,16 +1,16 @@
 package frc.robot.commands;
-
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Pigeon;
 import frc.robot.subsystems.SwerveDrive;
 
 public class InitDrivePID extends CommandBase
 {
-    private final SwerveDrive swerveDrive;
-    double angle;
+    //private final SwerveDrive swerveDrive;
+   // double angle;
 
     // Distance in inches
-    public InitDrivePID(SwerveDrive swerveDrive, Pigeon pigeon, int angle)
+    /*public InitDrivePID(SwerveDrive swerveDrive, Pigeon pigeon, int angle)
     {
         this.swerveDrive = swerveDrive;
         addRequirements(swerveDrive);
@@ -28,5 +28,21 @@ public class InitDrivePID extends CommandBase
     public boolean isFinished()
     {
         return false;
-    }
+    } */
+    
+        // Distance in inches
+        public InitDrivePID() {
+            addRequirements(RobotContainer.pigeonSub);
+        }
+    
+        @Override
+        public void execute() {
+            Pigeon.resetPigeon();
+        }
+    
+        @Override
+        public boolean isFinished() {
+            return false;
+        
+}
 }

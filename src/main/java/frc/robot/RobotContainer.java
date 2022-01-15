@@ -7,6 +7,8 @@ import frc.robot.subsystems.SwerveDrive;
 import frc.robot.subsystems.SwerveLock;
 import frc.robot.subsystems.Utilities;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.Drive;
 import frc.robot.commands.MyAutonomousCommand;
 import frc.robot.commands.MyCommand;
 import frc.robot.commands.SwerveDriveCommand;
@@ -25,11 +27,13 @@ public class RobotContainer
     public static final SwerveDrive swerveDrive = new SwerveDrive();
     public static final Utilities utilities = new Utilities();
     public static final Pigeon pigeonSub = new Pigeon();
+    
+    public final SequentialCommandGroup driveForwardAutonomous = new SequentialCommandGroup(
+        new Drive(36, SwerveDrive.FORWARD));
 
     // The controllers
     public static final XboxController driverController = new XboxController(OIConstants.DRIVER_CONTROLLER);
     public static final XboxController operatorController = new XboxController(OIConstants.OPERATOR_CONTROLLER);
-
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */

@@ -3,8 +3,8 @@ package frc.robot;
 public final class SwerveModuleConstants
 {
     public static final int CAN_TIMEOUT = 20;
-    public static final int CURRENT_LIMIT_STALL = 40;
-    public static final int CURRENT_LIMIT_FREE = 20;
+    public static final int CURRENT_LIMIT_STALL = 40; //Current limit at 0 RPM
+    public static final int CURRENT_LIMIT_FREE = 20;  //Current limit when free moving
     public static final int PERIODIC_FRAME_PERIOD = 5;
 
     // Order for all arrays: (BL, BR, FR, FL)

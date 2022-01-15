@@ -243,6 +243,7 @@ public class SwerveDrive extends SubsystemBase
                 // SmartDashboard.putNumber("Heading Error", headingHoldPID.getPositionError());
                 // SmartDashboard.putNumber("Heading Output", rotation);
                 driveAuto(xTranslation, yTranslation, rotation);
+                drive(xTranslation, yTranslation, 0);
         }
 
         public boolean isDrivePIDWithinTolerance()
