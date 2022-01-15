@@ -27,21 +27,25 @@ public class SwerveDrive extends SubsystemBase
         private NetworkTableEntry frontLeftRawAngleDisplay;
         private NetworkTableEntry frontLeftOffsetDisplay;
         private NetworkTableEntry frontLeftAlignmentDisplay;
+        private double frontLeftInitialAngle;
         //Front right
         private NetworkTableEntry frontRightAngleDisplay;
         private NetworkTableEntry frontRightRawAngleDisplay;
         private NetworkTableEntry frontRightOffsetDisplay;
         private NetworkTableEntry frontRightAlignmentDisplay;
+        private double frontRightInitialAngle;
         //Back left
         private NetworkTableEntry backLeftAngleDisplay;
         private NetworkTableEntry backLeftRawAngleDisplay;
         private NetworkTableEntry backLeftOffsetDisplay;
         private NetworkTableEntry backLeftAlignmentDisplay;
+        private double backLeftInitialAngle;
         //Back right
         private NetworkTableEntry backRightAngleDisplay;
         private NetworkTableEntry backRightRawAngleDisplay;
         private NetworkTableEntry backRightOffsetDisplay;
         private NetworkTableEntry backRightAlignmentDisplay;
+        private double backRightInitialAngle;
 
         public SwerveDrive()
         {
@@ -86,41 +90,45 @@ public class SwerveDrive extends SubsystemBase
                 frontLeftAngleDisplay.setDouble(frontLeft.getAngle());
                 frontLeftRawAngleDisplay.setDouble(frontLeft.getRawAngle());
                 frontLeftOffsetDisplay.setDouble(frontLeft.getOffset());
-                frontLeftAlignmentDisplay.setDouble(frontLeft.getRawAngle()-frontLeft.getAngle());
+                frontLeftAlignmentDisplay.setDouble(frontLeft.getRawAngle()-frontLeftInitialAngle);
                 //Front right
                 frontRightAngleDisplay.setDouble(frontRight.getAngle());
                 frontRightRawAngleDisplay.setDouble(frontRight.getRawAngle());
                 frontRightOffsetDisplay.setDouble(frontRight.getOffset());
-                frontRightAlignmentDisplay.setDouble(frontRight.getRawAngle()-frontRight.getAngle());
+                frontRightAlignmentDisplay.setDouble(frontRight.getRawAngle()-frontRightInitialAngle);
                 //Back left
                 backLeftAngleDisplay.setDouble(backLeft.getAngle());
                 backLeftRawAngleDisplay.setDouble(backLeft.getRawAngle());
                 backLeftOffsetDisplay.setDouble(backLeft.getOffset());
-                backLeftAlignmentDisplay.setDouble(backLeft.getRawAngle()-backLeft.getAngle());
+                backLeftAlignmentDisplay.setDouble(backLeft.getRawAngle()-backLeftInitialAngle);
                 //Back right
                 backRightAngleDisplay.setDouble(backRight.getAngle());
                 backRightRawAngleDisplay.setDouble(backRight.getRawAngle());
                 backRightOffsetDisplay.setDouble(backRight.getOffset());
-                backRightAlignmentDisplay.setDouble(backRight.getRawAngle()-backRight.getAngle());
+                backRightAlignmentDisplay.setDouble(backRight.getRawAngle()-backRightInitialAngle);
         }
         public void putAngles()
         {
                 //Front left
+                frontLeftInitialAngle = frontLeft.getRawAngle();
                 frontLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontLeftRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("FL Raw Angle",frontLeft.getRawAngle()).withPosition(1,0).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontLeftOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Offset",frontLeft.getOffset()).withPosition(0,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontLeftAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("FL Test Offset",frontLeft.getRawAngle()-frontLeft.getAngle()).withPosition(1,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Front right
+                frontRightInitialAngle = frontRight.getRawAngle();
                 frontRightAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Right Angle",frontRight.getAngle()).withPosition(2,0).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontRightRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("FR Raw Angle",frontRight.getRawAngle()).withPosition(3,0).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontRightOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Right Offset",frontRight.getOffset()).withPosition(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 frontRightAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("FR Test Offset",frontRight.getRawAngle()-frontRight.getAngle()).withPosition(3,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Back left
+                backLeftInitialAngle = backLeft.getRawAngle();
                 backLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Left Angle",backLeft.getAngle()).withPosition(0,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                 backLeftRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("BL Raw Angle",backLeft.getRawAngle()).withPosition(1,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                 backLeftOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Left Offset",backLeft.getOffset()).withPosition(0,3).withWidget(BuiltInWidgets.kTextView).getEntry();
                 backLeftAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("BL Test Offset",backLeft.getRawAngle()-backLeft.getAngle()).withPosition(1,3).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Back right
+                backRightInitialAngle = backRight.getRawAngle();
                 backRightAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Right Angle",backRight.getAngle()).withPosition(2,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                 backRightRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("BR Raw Angle",backRight.getRawAngle()).withPosition(3,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                 backRightOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Right Offset",backRight.getOffset()).withPosition(2,3).withWidget(BuiltInWidgets.kTextView).getEntry();
