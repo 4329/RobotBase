@@ -26,18 +26,22 @@ public class SwerveDrive extends SubsystemBase
         private NetworkTableEntry frontLeftAngleDisplay;
         private NetworkTableEntry frontLeftRawAngleDisplay;
         private NetworkTableEntry frontLeftOffsetDisplay;
+        private NetworkTableEntry frontLeftAlignmentDisplay;
         //Front right
         private NetworkTableEntry frontRightAngleDisplay;
         private NetworkTableEntry frontRightRawAngleDisplay;
         private NetworkTableEntry frontRightOffsetDisplay;
+        private NetworkTableEntry frontRightAlignmentDisplay;
         //Back left
         private NetworkTableEntry backLeftAngleDisplay;
         private NetworkTableEntry backLeftRawAngleDisplay;
         private NetworkTableEntry backLeftOffsetDisplay;
+        private NetworkTableEntry backLeftAlignmentDisplay;
         //Back right
         private NetworkTableEntry backRightAngleDisplay;
         private NetworkTableEntry backRightRawAngleDisplay;
         private NetworkTableEntry backRightOffsetDisplay;
+        private NetworkTableEntry backRightAlignmentDisplay;
 
         public SwerveDrive()
         {
@@ -82,37 +86,45 @@ public class SwerveDrive extends SubsystemBase
                 frontLeftAngleDisplay.setDouble(frontLeft.getAngle());
                 frontLeftRawAngleDisplay.setDouble(frontLeft.getRawAngle());
                 frontLeftOffsetDisplay.setDouble(frontLeft.getOffset());
+                frontLeftAlignmentDisplay.setDouble(frontLeft.getRawAngle()-frontLeft.getAngle());
                 //Front right
                 frontRightAngleDisplay.setDouble(frontRight.getAngle());
                 frontRightRawAngleDisplay.setDouble(frontRight.getRawAngle());
                 frontRightOffsetDisplay.setDouble(frontRight.getOffset());
+                frontRightAlignmentDisplay.setDouble(frontRight.getRawAngle()-frontRight.getAngle());
                 //Back left
                 backLeftAngleDisplay.setDouble(backLeft.getAngle());
                 backLeftRawAngleDisplay.setDouble(backLeft.getRawAngle());
                 backLeftOffsetDisplay.setDouble(backLeft.getOffset());
+                backLeftAlignmentDisplay.setDouble(backLeft.getRawAngle()-backLeft.getAngle());
                 //Back right
                 backRightAngleDisplay.setDouble(backRight.getAngle());
                 backRightRawAngleDisplay.setDouble(backRight.getRawAngle());
                 backRightOffsetDisplay.setDouble(backRight.getOffset());
+                backRightAlignmentDisplay.setDouble(backRight.getRawAngle()-backRight.getAngle());
         }
         public void putAngles()
         {
                 //Front left
-                frontLeftAngleDisplay = Shuffleboard.getTab("Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
-                frontLeftRawAngleDisplay = Shuffleboard.getTab("Debug").add("Raw Angle",frontLeft.getRawAngle()).withPosition(1,0).withWidget(BuiltInWidgets.kTextView).getEntry();
-                frontLeftOffsetDisplay = Shuffleboard.getTab("Debug").add("Offset",frontLeft.getOffset()).withPosition(0,1).withSize(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontLeftRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("FL Raw Angle",frontLeft.getRawAngle()).withPosition(1,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontLeftOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Offset",frontLeft.getOffset()).withPosition(0,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontLeftAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("FL Test Offset",frontLeft.getRawAngle()-frontLeft.getAngle()).withPosition(1,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Front right
-                frontRightAngleDisplay = Shuffleboard.getTab("Debug").add("Front Right Angle",frontRight.getAngle()).withPosition(2,0).withWidget(BuiltInWidgets.kTextView).getEntry();
-                frontRightRawAngleDisplay = Shuffleboard.getTab("Debug").add("Raw Angle",frontRight.getRawAngle()).withPosition(3,0).withWidget(BuiltInWidgets.kTextView).getEntry();
-                frontRightOffsetDisplay = Shuffleboard.getTab("Debug").add("Offset",frontRight.getOffset()).withPosition(2,1).withSize(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Right Angle",frontRight.getAngle()).withPosition(2,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("FR Raw Angle",frontRight.getRawAngle()).withPosition(3,0).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Right Offset",frontRight.getOffset()).withPosition(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                frontRightAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("FR Test Offset",frontRight.getRawAngle()-frontRight.getAngle()).withPosition(3,1).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Back left
-                backLeftAngleDisplay = Shuffleboard.getTab("Debug").add("Back Left Angle",backLeft.getAngle()).withPosition(0,2).withWidget(BuiltInWidgets.kTextView).getEntry();
-                backLeftRawAngleDisplay = Shuffleboard.getTab("Debug").add("Angle",backLeft.getRawAngle()).withPosition(1,2).withWidget(BuiltInWidgets.kTextView).getEntry();
-                backLeftOffsetDisplay = Shuffleboard.getTab("Debug").add("Offset",backLeft.getOffset()).withPosition(0,3).withSize(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Left Angle",backLeft.getAngle()).withPosition(0,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("BL Raw Angle",backLeft.getRawAngle()).withPosition(1,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Left Offset",backLeft.getOffset()).withPosition(0,3).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backLeftAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("BL Test Offset",backLeft.getRawAngle()-backLeft.getAngle()).withPosition(1,3).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Back right
-                backRightAngleDisplay = Shuffleboard.getTab("Debug").add("Back Right Angle",backRight.getAngle()).withPosition(2,2).withWidget(BuiltInWidgets.kTextView).getEntry();
-                backRightRawAngleDisplay = Shuffleboard.getTab("Debug").add("Raw Angle",backRight.getRawAngle()).withPosition(3,2).withWidget(BuiltInWidgets.kTextView).getEntry();
-                backRightOffsetDisplay = Shuffleboard.getTab("Debug").add("Offset",backRight.getOffset()).withPosition(2,3).withSize(2,1).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Right Angle",backRight.getAngle()).withPosition(2,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightRawAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("BR Raw Angle",backRight.getRawAngle()).withPosition(3,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightOffsetDisplay = Shuffleboard.getTab("Swerve Debug").add("Back Right Offset",backRight.getOffset()).withPosition(2,3).withWidget(BuiltInWidgets.kTextView).getEntry();
+                backRightAlignmentDisplay = Shuffleboard.getTab("Swerve Debug").add("BR Test Offset",backRight.getRawAngle()-backRight.getAngle()).withPosition(3,3).withWidget(BuiltInWidgets.kTextView).getEntry();
         }
 
         public void drive(double xTranslation, double yTranslation, double rotation)
