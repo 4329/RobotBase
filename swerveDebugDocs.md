@@ -1,6 +1,6 @@
 # Swerve Debug Documentation
 
-Swerve debug is designed to make alignment of the swerve drive easier. All information is provided in the 'Swerve Debug' tab, and comes from the direction each swerve module is facing. This information can be activated by running the 'Test' mode in the Driver Station.
+Swerve debug is designed to make alignment of the swerve drive easier. All information is provided in the `Swerve Debug` tab, and comes from the direction each swerve module is facing. This information can be activated by running the `Test` mode in the Driver Station.
 
 ## What each section does
 
@@ -20,4 +20,4 @@ The menu is divided into four sections, `Angle`, `Raw Angle`, `Offset`, and `Tes
 
 ### Test Offset
 
-`Test Offset` measures how far each wheel is turned from their position when the program is run. This should help in the calibration of new swerve modules. Changes should be applied to the `protoConfig.txt` file on lines 82 to 85.
+`Test Offset` measures how far each wheel is turned from their position when the robot is enabled. First, enable the robot. Then, manually rotate the wheel(s) until they're aligned. Once the wheel(s) are aligned, the output(s) from `Test Offset` should be entered in `protoConfig.txt` on lines 82 to 85. The file is located in [`src\main\deploy`](https://github.com/4329/RobotBase/blob/shuffleboardcleanup/src/main/deploy/protoConfig.txt).
