@@ -20,4 +20,4 @@ The menu is divided into four sections, `Angle`, `Raw Angle`, `Offset`, and `Tes
 
 ### Test Offset
 
-`Test Offset` measures how far each wheel is turned from their position when the robot is enabled. First, enable the robot. Then, manually rotate the wheel(s) until they're aligned. Once the wheel(s) are aligned, the output(s) from `Test Offset` should be entered in `protoConfig.txt` on lines 82 to 85. The file is located in [`src\main\deploy`](https://github.com/4329/RobotBase/blob/shuffleboardcleanup/src/main/deploy/protoConfig.txt).
+`Test Offset` measures how far each wheel is turned from their position when the robot is enabled. First, enable the robot. Then, manually rotate the wheel(s) until they're aligned. Once the wheel(s) are aligned, the output(s) from `Test Offset` should be entered in `protoConfig.txt` on lines 82 to 85. The file is located in [`src\main\deploy`](https://github.com/4329/RobotBase/blob/shuffleboardcleanup/src/main/deploy/protoConfig.txt#L82).
