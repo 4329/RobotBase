@@ -18,7 +18,7 @@ public class LimelightSubsystem extends SubsystemBase {
     int defaultvalue = 1;
     PIDController limeLightPid;
     double h1In = Configrun.get(12.3125, "h1In");
-    //height of the robot
+    //height of the limelight off of the ground
     double h2In = Configrun.get(83, "h2In");
     //height of the target
     double a1Degree = Configrun.get(0.0, "a1Degree");
@@ -39,10 +39,10 @@ public class LimelightSubsystem extends SubsystemBase {
         taTolerance = Configrun.get(0.3, "taTolerance");
     }
 
-    // Sets calculation distance for shooter
     public void setDistance() {
         currentDistance = getDistanceFromTarget();
     }
+    // Sets calculation distance for shooter
 
     public double checkTx() {
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -87,7 +87,9 @@ public class LimelightSubsystem extends SubsystemBase {
 
     public void putDistance() {
         limeLightDistance = (h2In - h1In) / Math.tan(Math.toRadians(a1Degree) + (Math.toRadians(checkTy())));
+        // runing this math equation d = (h2-h1) / tan(a1+a2)
         SmartDashboard.putNumber("Limelight Distance", limeLightDistance);
+        //puts the distance from the limelight on smartdashboard
     }
 
     public double getDistanceFromTarget() {
@@ -106,18 +108,23 @@ public class LimelightSubsystem extends SubsystemBase {
         // NetworkTableEntry ledSmartDashboard = table.getEntry("ledSmartDashboard");
 
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").getDouble(0);
-        //turns the limelight on using defaulvalue
+
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("<variablename>").setNumber(defaultvalue);
+        //turns the limelight on using defaulvalue
 
-        // read values periodically
         double x = tx.getDouble(0.0);
+        // read values of tx to convert to x periodically
         double y = ty.getDouble(0.0);
+        // read values of ty to convert to y periodically
         double area = ta.getDouble(0.0);
+        // read values of ta to convert to area periodically
 
-        // post to smart dashboard periodically
         SmartDashboard.putNumber("LimelightX", x);
+        // post the value of x to smart dashboard periodically
         SmartDashboard.putNumber("LimelightY", y);
+        // post the value of y to smart dashboard periodically
         SmartDashboard.putNumber("LimelightArea", area);
+        // post the value of area to smart dashboard periodically
 
     }
 
@@ -127,6 +134,7 @@ public class LimelightSubsystem extends SubsystemBase {
 
     public void putTargetAcquired() {
         boolean status;
+        //true or false value
         if (checkTa() >= taTolerance) {
             status = true;
         } else {
