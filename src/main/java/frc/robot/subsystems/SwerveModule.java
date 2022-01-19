@@ -57,9 +57,8 @@ public class SwerveModule extends SubsystemBase
     
     SwerveModuleState state = rotationController.controlRotationExceeds90(angle, module, speed);
 
-    module.translationMotor.set(state.angle.getDegrees());
-    module.rotationMotor.set(state.speedMetersPerSecond);
-
+    module.translationMotor.set(state.speedMetersPerSecond);
+    module.rotationMotor.set(state.angle.getDegrees());
   }
 
   public void driveModuleTeleop(SwerveModule module, double xTranslation, double yTranslation, double rotation)
