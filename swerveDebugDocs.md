@@ -24,4 +24,4 @@ The menu is divided into four sections, `Angle`, `Raw Angle`, `Offset`, and `Tes
 
 1. Enable the robot in `Test` mode.
 2. Rotate the wheel(s) until they are in the correct position(s).
-3. Copy the output(s) from `Test Offset` and paste it/them into the file coresponding to the robot being worked on (located in [`src\main\deploy`](https://github.com/4329/RobotBase/blob/shuffleboardcleanup/src/main/deploy)).
+3. Copy the output(s) from `Test Offset` and paste it/them into the file coresponding to the robot being worked on (located in [`src\main\deploy`](https://github.com/4329/RobotBase/blob/shuffleboardcleanup/src/main/deploy)) on lines 82 to 85.
