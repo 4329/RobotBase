@@ -90,27 +90,27 @@ public class SwerveDrive extends SubsystemBase
                 frontLeftAngleDisplay.setDouble(frontLeft.getAngle());
                 frontLeftRawAngleDisplay.setDouble(frontLeft.getRawAngle());
                 frontLeftOffsetDisplay.setDouble(frontLeft.getOffset());
-                frontLeftAlignmentDisplay.setDouble(frontLeft.getRawAngle()-frontLeftInitialAngle);
+                frontLeftAlignmentDisplay.setDouble(frontLeft.getRawAngle()-frontLeftInitialAngle+frontLeft.getOffset());
                 //Front right
                 frontRightAngleDisplay.setDouble(frontRight.getAngle());
                 frontRightRawAngleDisplay.setDouble(frontRight.getRawAngle());
                 frontRightOffsetDisplay.setDouble(frontRight.getOffset());
-                frontRightAlignmentDisplay.setDouble(frontRight.getRawAngle()-frontRightInitialAngle);
+                frontRightAlignmentDisplay.setDouble(frontRight.getRawAngle()-frontRightInitialAngle+frontRight.getOffset());
                 //Back left
                 backLeftAngleDisplay.setDouble(backLeft.getAngle());
                 backLeftRawAngleDisplay.setDouble(backLeft.getRawAngle());
                 backLeftOffsetDisplay.setDouble(backLeft.getOffset());
-                backLeftAlignmentDisplay.setDouble(backLeft.getRawAngle()-backLeftInitialAngle);
+                backLeftAlignmentDisplay.setDouble(backLeft.getRawAngle()-backLeftInitialAngle+backLeft.getOffset());
                 //Back right
                 backRightAngleDisplay.setDouble(backRight.getAngle());
                 backRightRawAngleDisplay.setDouble(backRight.getRawAngle());
                 backRightOffsetDisplay.setDouble(backRight.getOffset());
-                backRightAlignmentDisplay.setDouble(backRight.getRawAngle()-backRightInitialAngle);
+                backRightAlignmentDisplay.setDouble(backRight.getRawAngle()-backRightInitialAngle+backRight.getOffset());
         }
         public void putAngles()
         {
                 //Documentation:
-                Shuffleboard.getTab("Swerve Debug").add("Documentation","https://github.com/4329/RobotBase/blob/shuffleboardcleanup/swerveDebugDocs.md").withPosition(4,0).withSize(1,7).withWidget(BuiltInWidgets.kTextView).getEntry();
+                Shuffleboard.getTab("Swerve Debug").add("Documentation","https://github.com/4329/RobotBase/blob/shuffleboardcleanup/swerveDebugDocs.md").withPosition(5,1).withSize(5,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                 //Front left
                 frontLeftInitialAngle = frontLeft.getRawAngle();
                 frontLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
