@@ -18,7 +18,9 @@ public class LimelightSubsystem extends SubsystemBase {
     int defaultvalue = 1;
     PIDController limeLightPid;
     double h1In = Configrun.get(12.3125, "h1In");
+    //height of the robot
     double h2In = Configrun.get(83, "h2In");
+    //height of the target
     double a1Degree = Configrun.get(0.0, "a1Degree");
     double limeLightDistance;
     int limeLightTolerance = Configrun.get(1, "limeLightTolerance");
@@ -48,6 +50,7 @@ public class LimelightSubsystem extends SubsystemBase {
         double x = tx.getDouble(0.0);
         return x;
     }
+    // check Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
 
     // public void runLimelightPID() {
     //     if (!RobotContainer.shooter.isShooterOverriden()) {
@@ -72,6 +75,7 @@ public class LimelightSubsystem extends SubsystemBase {
         double a = ta.getDouble(0.0);
         return a;
     }
+    // checks the area visible of the Target (0% of image to 100% of image)
 
     private double checkTy() {
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -79,6 +83,7 @@ public class LimelightSubsystem extends SubsystemBase {
         double y = ty.getDouble(0.0);
         return y;
     }
+    //checks Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
 
     public void putDistance() {
         limeLightDistance = (h2In - h1In) / Math.tan(Math.toRadians(a1Degree) + (Math.toRadians(checkTy())));
