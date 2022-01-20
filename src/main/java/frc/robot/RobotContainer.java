@@ -13,12 +13,14 @@ import frc.robot.commands.SwerveDriveCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.subsystems.LimelightSubsystem;
 
 public class RobotContainer
 {
     // The robot's subsystems
     private final MySubsystem mySubsystem = new MySubsystem();
     public static final OI oi = new OI();
+    public static final LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
 
     //public static final Shooter shooter = new Shooter();
 

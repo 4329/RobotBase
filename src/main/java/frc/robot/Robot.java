@@ -60,6 +60,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    RobotContainer.limelightSubsystem.putDistance();
+    // line above puts the distance values into smartdashboard when runing the robot in testmode
     // Runs the Scheduler. This is responsible for polling buttons, adding
     // newly-scheduled commands, running already-scheduled commands, removing finished or
     // interrupted commands,

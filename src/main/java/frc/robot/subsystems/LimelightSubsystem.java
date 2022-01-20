@@ -68,6 +68,7 @@ public class LimelightSubsystem extends SubsystemBase {
 
     //     }
     // }
+    //need a shooter code for the code above to be needed
 
     public double checkTa() {
         NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -88,6 +89,8 @@ public class LimelightSubsystem extends SubsystemBase {
     public void putDistance() {
         limeLightDistance = (h2In - h1In) / Math.tan(Math.toRadians(a1Degree) + (Math.toRadians(checkTy())));
         // runing this math equation d = (h2-h1) / tan(a1+a2)
+        // a2 = Ty
+        // Ty = vertical offset
         SmartDashboard.putNumber("Limelight Distance", limeLightDistance);
         //puts the distance from the limelight on smartdashboard
     }
