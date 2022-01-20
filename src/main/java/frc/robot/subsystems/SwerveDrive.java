@@ -115,7 +115,7 @@ public class SwerveDrive extends SubsystemBase
                         //This prevents two sets of widgets from appearing, causing a crash
                         hasBeenInitialized = true;
                         //Documentation:
-                        Shuffleboard.getTab("Swerve Debug").add("Documentation","https://github.com/4329/RobotBase/blob/shuffleboardcleanup/swerveDebugDocs.md").withPosition(5,1).withSize(5,2).withWidget(BuiltInWidgets.kTextView).getEntry();
+                        Shuffleboard.getTab("Swerve Debug").add("Documentation","https://github.com/4329/RobotBase/blob/main/swerveDebugDocs.md").withPosition(5,1).withSize(5,2).withWidget(BuiltInWidgets.kTextView).getEntry();
                         //Front left
                         frontLeftInitialAngle = frontLeft.getRawAngle();
                         frontLeftAngleDisplay = Shuffleboard.getTab("Swerve Debug").add("Front Left Angle",frontLeft.getAngle()).withPosition(0,0).withWidget(BuiltInWidgets.kTextView).getEntry();
@@ -287,7 +287,7 @@ public class SwerveDrive extends SubsystemBase
         public void runDrivePID(double setpoint, double angle)
         {
                 setpoint = setpoint + (setpoint * aDrive + bDrive);
-                SmartDashboard.putNumber("Setpoint in Inches", setpoint);
+                //SmartDashboard.putNumber("Setpoint in Inches", setpoint);
                 setpoint = setpoint / 12; // convert to feet
                 setpoint = setpoint * unitsPerFoot; // covert to native units
                 double output = drivePID.calculate(getAverageEncoderPulses(), setpoint);
