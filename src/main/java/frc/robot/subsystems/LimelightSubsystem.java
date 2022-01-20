@@ -20,7 +20,7 @@ public class LimelightSubsystem extends SubsystemBase {
     double h1In = Configrun.get(12.3125, "h1In");
     //height of the limelight off of the ground
     double h2In = Configrun.get(83, "h2In");
-    //height of the target
+    //height of the target 8ft 8inches aka 104 inches
     double a1Degree = Configrun.get(0.0, "a1Degree");
     double limeLightDistance;
     int limeLightTolerance = Configrun.get(1, "limeLightTolerance");
